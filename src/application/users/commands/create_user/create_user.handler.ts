@@ -16,13 +16,13 @@ export class CreateUserHandler {
 
   readonly #repository: UserRepository;
   readonly #uuid_generator: UuidGenerator;
-
   readonly #hasher: Hasher;
+
   async handle(command: CreateUserCommand): Promise<Either<UserEntity, Failure>> {
     const maybe_user_finded = await this.#repository.findByName(command.name);
 
     if (maybe_user_finded.has_value) {
-      return Either.right(UserFailures.NAME_IN_USE);
+      return Either.right(UserFailures.USER_NAME_IN_USE);
     }
 
     const uuid: string = this.#uuid_generator.generateUuid();

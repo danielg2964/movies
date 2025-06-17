@@ -58,7 +58,7 @@ describe ("CreateUserHandler Test", () => {
     assert.equal(result.is_right, true);
     
     const right = result.right;
-    assert.equal(right, UserFailures.NAME_IN_USE);
+    assert.equal(right, UserFailures.USER_NAME_IN_USE);
 
     assert.equal(findByNameMock.mock.callCount(), 1);
   })
