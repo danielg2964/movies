@@ -1,7 +1,7 @@
 import type { Hasher } from "#application/shared/hasher.ts";
 import type { UuidGenerator } from "#application/shared/uuid.generator.ts";
 import { UserFailures } from "#application/users/failures/user.failures.ts";
-import type { UserRepository } from "#application/users/user.repository.ts";
+import type { UserRepository } from "#application/users/repositories/user.repository.ts";
 import { UserEntity } from "#domain/users/entities/user.entity.ts";
 import { Either } from "#types/either.ts";
 import { Failure } from "#types/failure.ts";

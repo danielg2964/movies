@@ -5,7 +5,7 @@ import { Either } from "#types/either.ts";
 import { Success } from "#types/success.ts";
 import { Failure } from "#types/failure.ts";
 
-export class WathcedEntity extends Entity {
+export class WatchedEntity extends Entity {
   constructor(uuid: string, user_uuid: string, movie_uuid: string) {
     super(uuid);
 

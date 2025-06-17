@@ -1,21 +1,21 @@
 import { Entity } from "#domain/shared/entity.ts";
 import type { Failure } from "#types/failure.ts";
 import { Maybe } from "#types/maybe.ts";
-import { Category } from "../category.ts";
+import { CategoryName } from "../category.name.ts";
 
 export class CategoryEntity extends Entity {
   constructor(uuid: string, category: string) {
     super(uuid);
 
-    this.#category = new Category(category);
+    this.#name = new CategoryName(category);
   }
 
-  #category: Category;
-  get category(): string {
-    return this.#category.value;
+  #name: CategoryName;
+  get name(): string {
+    return this.#name.value;
   }
-  setCategory(category: string): Maybe<Failure> {
-    this.#category = new Category(category);
+  setName(category: string): Maybe<Failure> {
+    this.#name = new CategoryName(category);
 
     return Maybe.nothing();
   }

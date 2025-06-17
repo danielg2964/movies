@@ -1,4 +1,4 @@
-export class Category {
+export class CategoryName {
   constructor(value: string) {
     this.#value = value;
   }

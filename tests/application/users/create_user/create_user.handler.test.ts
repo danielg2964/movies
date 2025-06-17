@@ -7,11 +7,11 @@ import { Maybe } from "#types/maybe.ts";
 
 import { CreateUserCommand } from "#application/users/commands/create_user/create_user.command.ts";
 import { CreateUserHandler } from "#application/users/commands/create_user/create_user.handler.ts";
-import type { UserRepository } from "#application/users/user.repository.ts";
 import { UserEntity } from "#domain/users/entities/user.entity.ts";
 import { UserFailures } from "#application/users/failures/user.failures.ts";
 import type { UuidGenerator } from "#application/shared/uuid.generator.ts";
 import type { Hasher } from "#application/shared/hasher.ts";
+import type { UserRepository } from "#application/users/repositories/user.repository.ts";
 
 describe ("CreateUserHandler Test", () => {
   const command = new CreateUserCommand(faker.internet.displayName(), faker.internet.password()); 

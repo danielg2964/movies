@@ -41,7 +41,7 @@ export class MovieEntity extends Entity {
 
   #category: CategoryEntity;
   get category(): string {
-    return this.#category.category;
+    return this.#category.name;
   }
   setCategory(category: CategoryEntity): Maybe<Failure> {
     if (category.equals(this.#category)) { 
