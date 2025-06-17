@@ -1,0 +1,29 @@
+{
+  "name": "movies",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./src/main.ts",
+  "type": "module",
+  "scripts": {
+    "start": "node --experimental-strip-types --disable-warning=ExperimentalWarning .",
+    "start:watch": "node --experimental-strip-types --disable-warning=ExperimentalWarning --watch .",
+    "test": "node --experimental-strip-types --disable-warning=ExperimentalWarning --test ./tests/**/**.test.ts",
+    "test:watch": "node --experimental-strip-types --disable-warnings=ExperimentalWarning --watch --test ./tests/**/**.test.ts"
+  },
+  "imports": {
+    "#domain/*": "./src/domain/*",
+    "#application/*": "./src/application/*",
+    "#types/*": "./types/*"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "24.0.3",
+    "typescript": "5.8.3",
+    "zod": "3.25.67"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "9.8.0"
+  }
+}
