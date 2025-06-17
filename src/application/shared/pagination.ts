@@ -6,7 +6,6 @@ export class Pagination<T> {
     actual_page: number,
     offset: number,
     data: T[],
-    has_next_page: boolean
   ) {
     this.#total_count = total_count;
     this.#limit = limit;
@@ -14,7 +13,8 @@ export class Pagination<T> {
     this.#actual_page = actual_page;
     this.#offset = offset;
     this.#data = data;
-    this.#has_next_page = has_next_page;
+
+    this.#has_next_page = actual_page < total_pages;
   }
 
   readonly #total_count: number;

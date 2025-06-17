@@ -151,6 +151,7 @@ describe("WatchMovieHandler Test", () => {
     assert.equal(left, UserSuccesses.USER_JUST_WATCH_A_MOVIE);
 
     assert.deepEqual(saveMock.mock.callCount(), 1);
+    assert.ok(watched_saved!);
   });
 })
 
