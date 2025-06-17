@@ -2,19 +2,17 @@ export class Pagination<T> {
   constructor(
     total_count: number,
     limit: number,
-    total_pages: number,
     actual_page: number,
-    offset: number,
     data: T[],
   ) {
     this.#total_count = total_count;
     this.#limit = limit;
-    this.#total_pages = total_pages;
+    this.#total_pages = Math.ceil(total_count / limit);
     this.#actual_page = actual_page;
-    this.#offset = offset;
+    this.#offset = (actual_page - 1) * limit;
     this.#data = data;
 
-    this.#has_next_page = actual_page < total_pages;
+    this.#has_next_page = actual_page < this.#total_pages;
   }
 
   readonly #total_count: number;

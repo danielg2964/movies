@@ -16,5 +16,7 @@ export interface MovieRepository extends Repository<MovieEntity> {
 
   findManyByFilterPaginated(movie_filter: MovieFilter, pagination_options: PaginationOptions): Promise<Pagination<MovieEntity>>;
 
+  findManyNewMovies(pagination_options: PaginationOptions): Promise<Pagination<MovieEntity>>;
+  
   findByDate(date: Date): Promise<Maybe<MovieEntity>>;
 }
