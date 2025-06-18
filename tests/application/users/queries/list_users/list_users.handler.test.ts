@@ -12,7 +12,7 @@ import { ListUsersHandler } from "#application/users/queries/list_users/list_use
 import { WatchedEntity } from "#domain/users/entities/watched.entity.ts";
 
 describe("ListUsers Test", () => {
-  const users: UserEntity[] = new Array(5).map(_ => {
+  const users: UserEntity[] = Array.from({ length: 5 }, _ => {
     const user_uuid = faker.string.uuid();
 
     return new UserEntity(

@@ -11,15 +11,15 @@ import type { MovieRepository } from "#application/movies/repositories/movie.rep
 import { Pagination } from "#application/shared/pagination.ts";
 
 describe("ListNewMoviesHandler Test", () => {
-  const movies: MovieEntity[] = Array(30).map(_ => {
-        const category_uuid = faker.string.uuid();
-        return new MovieEntity(
-          faker.string.uuid(),
-          faker.book.title(),
-          category_uuid,
-          new CategoryEntity(category_uuid, faker.book.genre()),
-          new Date()
-        );
+  const movies: MovieEntity[] = Array.from({ length: 30 }, _ => {
+    const category_uuid = faker.string.uuid();
+    return new MovieEntity(
+      faker.string.uuid(),
+      faker.book.title(),
+      category_uuid,
+      new CategoryEntity(category_uuid, faker.book.genre()),
+      new Date()
+    );
   })
 
   const pagination_options = new PaginationOptions(1, movies.length);
