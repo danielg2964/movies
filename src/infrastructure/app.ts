@@ -11,6 +11,11 @@ import { PostgresCategoryRepository } from "./movies/repositories/postgres-categ
 export async function createApp() {
   const app = fastify();
   
+  app.register(import("@fastify/swagger"));
+  app.register(import("@fastify/swagger-ui"), {
+    routePrefix: "/docs"
+  });
+
   const user_repository = new PostgresUserRepository()
   const watched_repository = new PostgresWatchedRepository();
   const movie_repository = new PostgresMovieRepository()
