@@ -1,12 +1,12 @@
 # Proyecto Node.js
 
-Proyecto en NodeJs haciendo uso una arquitectura limpia y clara para su correcta lectura y entendimiento.
+Proyecto en Node.Js haciendo uso de una arquitectura limpia y clara para su correcta lectura y entendimiento.
 
 ## Características
 
 - Estructura modular y clara
 - Uso de `node --env-file` para configuración
-- Uso del framework de `Fastify` para mayor velocidad
+- Uso del framework  `Fastify` para mayor velocidad
 - Uso de las últimas caracterisitcas de `Node.js LTS`
 - Uso nativo de `Typescript` gracias a `node --experimental-strip-types`
 - Uso de la suite de testing nativa de `Node.js` `node:test` y `node:assert/strict`
@@ -30,7 +30,7 @@ npm install
 node --run test
 ```
 
-## Prepración
+## Preparación
 ¡Recuerda tener tu archivo `.env` listo!
 ```bash
 npx drizzle-kit push
