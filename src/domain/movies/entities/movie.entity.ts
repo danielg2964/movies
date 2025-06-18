@@ -2,7 +2,7 @@ import { Entity } from "#domain/shared/entity.ts";
 import { Uuid } from "#domain/shared/uuid.ts";
 import { Failure } from "#types/failure.ts";
 import { Maybe } from "#types/maybe.ts";
-import { MovieConstants } from "../constants/movie.constants.ts";
+import { MoviesConstants } from "../constants/movies.constants.ts";
 import { MovieName } from "../movie.name.ts";
 import { MovieRelease } from "../movie.release.ts";
 import type { CategoryEntity } from "./category.entity.ts";
@@ -68,8 +68,7 @@ export class MovieEntity extends Entity {
 
   static isNew(date: Date): boolean {
     const now = new Date();
-    const three_weeks_ago = new Date(now.getTime() - MovieConstants.THREE_WEEKS_MS);
-
+    const three_weeks_ago = new Date(now.getTime() - MoviesConstants.THREE_WEEKS_MS);
     return date > three_weeks_ago;
   }
 }

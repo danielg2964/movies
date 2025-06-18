@@ -25,7 +25,7 @@ describe("ListNewMoviesHandler Test", () => {
   const pagination_options = new PaginationOptions(1, movies.length);
 
   const movie_repository: MovieRepository = {
-    findManyNewMovies(_) {}
+    findManyNewMoviesPaginated(_) {}
   } as MovieRepository;
 
   const handler = new ListNewMoviesHandler(movie_repository);
@@ -33,8 +33,8 @@ describe("ListNewMoviesHandler Test", () => {
   it("should return Pagination with new movies", async () => {
     let pagination: Pagination<MovieEntity>;
 
-    const findManyNewMoviesMock = mock.method(movie_repository, "findManyNewMovies");
-    findManyNewMoviesMock.mock.mockImplementationOnce(async options => {
+    const findManyNewMoviesPaginatedMock = mock.method(movie_repository, "findManyNewMoviesPaginated");
+    findManyNewMoviesPaginatedMock.mock.mockImplementationOnce(async options => {
       assert.deepEqual(options, pagination_options);
 
       pagination = new Pagination(
@@ -50,7 +50,7 @@ describe("ListNewMoviesHandler Test", () => {
     const result = await handler.handle(pagination_options);
 
     assert.deepEqual(result, pagination!);
-    assert.equal(findManyNewMoviesMock.mock.callCount(), 1);
+    assert.equal(findManyNewMoviesPaginatedMock.mock.callCount(), 1);
   });
 });
 

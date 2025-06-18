@@ -8,7 +8,7 @@ import type { MovieFilter } from "../movie.filter.ts";
 export interface MovieRepository extends Repository<MovieEntity> {
   findByName(name: string): Promise<Maybe<MovieEntity>>;
 
-  findManyByCategoryUuid(uuid: string): Promise<Maybe<MovieEntity>>;
+  findManyByCategoryUuid(uuid: string): Promise<MovieEntity[]>;
 
   findManyByCategoryName(name: string): Promise<MovieEntity[]>;
 
@@ -16,7 +16,7 @@ export interface MovieRepository extends Repository<MovieEntity> {
 
   findManyByFilterPaginated(movie_filter: MovieFilter, pagination_options: PaginationOptions): Promise<Pagination<MovieEntity>>;
 
-  findManyNewMovies(pagination_options: PaginationOptions): Promise<Pagination<MovieEntity>>;
+  findManyNewMoviesPaginated(pagination_options: PaginationOptions): Promise<Pagination<MovieEntity>>;
   
   findByDate(date: Date): Promise<Maybe<MovieEntity>>;
 }

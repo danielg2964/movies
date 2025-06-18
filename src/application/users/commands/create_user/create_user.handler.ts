@@ -25,6 +25,8 @@ export class CreateUserHandler {
       return Either.right(UserFailures.USER_NAME_IN_USE);
     }
 
+    console.log(maybe_user_finded.value);
+
     const uuid: string = this.#uuid_generator.generateUuid();
     const hash: string = await this.#hasher.hash(command.password);
 

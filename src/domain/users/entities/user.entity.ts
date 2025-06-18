@@ -1,23 +1,23 @@
 import { Entity } from "#domain/shared/entity.ts" ;
-import { MovieEntity } from "#domain/movies/entities/movie.entity.ts";
 
 import { UserName } from "../user.name.ts";
 import { UserPassword } from "../user.password.ts";
 import { Failure } from "#types/failure.ts";
 import { Maybe } from "#types/maybe.ts";
+import type { WatchedEntity } from "./watched.entity.ts";
 
 export class UserEntity extends Entity {
   constructor(
     uuid: string,
     name: string,
     password: string,
-    movies_watched: MovieEntity[]
+    watched: WatchedEntity[]
   ) {
     super(uuid);
 
     this.#name = new UserName(name);
     this.#password = new UserPassword(password);
-    this.#movies_watched = movies_watched;
+    this.#watched = watched;
   }
 
   #name: UserName;
@@ -41,12 +41,12 @@ export class UserEntity extends Entity {
     return Maybe.nothing()
   }
 
-  #movies_watched: MovieEntity[];
-  get movies_watched(): MovieEntity[] {
-    return this.#movies_watched;
+  #watched: WatchedEntity[];
+  get watched(): WatchedEntity[] {
+    return this.#watched;
   }
-  setMoviesWatched(movies_watched: MovieEntity[]): Maybe<Failure> {
-    this.#movies_watched = movies_watched;
+  setMoviesWatched(movies_watched: WatchedEntity[]): Maybe<Failure> {
+    this.#watched = movies_watched;
 
     return Maybe.nothing();
   }

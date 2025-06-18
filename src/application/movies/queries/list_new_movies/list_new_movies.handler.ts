@@ -11,6 +11,6 @@ export class ListNewMoviesHandler {
   readonly #movie_repository: MovieRepository;
   
   handle(pagination_options: PaginationOptions): Promise<Pagination<MovieEntity>> {
-    return this.#movie_repository.findManyNewMovies(pagination_options);
+    return this.#movie_repository.findManyNewMoviesPaginated(pagination_options);
   }
 }

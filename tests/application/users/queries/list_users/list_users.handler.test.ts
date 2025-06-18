@@ -9,25 +9,37 @@ import { PaginationOptions } from "#application/shared/pagination.options.ts";
 import type { UserRepository } from "#application/users/repositories/user.repository.ts";
 import { Pagination } from "#application/shared/pagination.ts";
 import { ListUsersHandler } from "#application/users/queries/list_users/list_users.handler.ts";
+import { WatchedEntity } from "#domain/users/entities/watched.entity.ts";
 
 describe("ListUsers Test", () => {
-  const users: UserEntity[] = new Array(5).map(_ => new UserEntity(
-      faker.string.uuid(),
+  const users: UserEntity[] = new Array(5).map(_ => {
+    const user_uuid = faker.string.uuid();
+
+    return new UserEntity(
+      user_uuid,
       faker.internet.displayName(),
       faker.string.alphanumeric({ length: 10 }),
       new Array(5).map(_ => {
         const category_uuid = faker.string.uuid();
-        return new MovieEntity(
+
+        const movie = new MovieEntity(
           faker.string.uuid(),
           faker.book.title(),
           category_uuid,
           new CategoryEntity(category_uuid, faker.book.genre()),
           new Date()
         )
+
+        return new WatchedEntity(
+          faker.string.uuid(),
+          user_uuid,
+          movie.uuid,
+          movie
+        );
        }
       )
     )
-  );
+  });
 
   const pagination_options = new PaginationOptions(1, users.length);
 
@@ -48,9 +60,7 @@ describe("ListUsers Test", () => {
       pagination = new Pagination(
         users.length,
         options.limit,
-        1,
-        1,
-        0,
+        options.page,
         users
       );
 

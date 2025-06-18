@@ -47,14 +47,15 @@ export class WatchMovieHandler {
 
     const movie_finded = maybe_movie_finded.value;
 
-    if (user_finded.movies_watched.some(m => m.equals(movie_finded))) {
+    if (user_finded.watched.some(m => m.movie_uuid === movie_finded.uuid)) {
       return Either.right(UserFailures.USER_ALREADY_WATCH_THIS_MOVIE);
     }
     
     const watched = new WatchedEntity(
       this.#uuid_generator.generateUuid(),
       user_finded.uuid,
-      movie_finded.uuid
+      movie_finded.uuid,
+      movie_finded
     );
 
     await this.#watched_repository.save(watched);

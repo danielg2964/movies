@@ -5,14 +5,15 @@
   "main": "./src/main.ts",
   "type": "module",
   "scripts": {
-    "start": "node --experimental-strip-types --disable-warning=ExperimentalWarning .",
-    "start:watch": "node --experimental-strip-types --disable-warning=ExperimentalWarning --watch .",
+    "start": "node --experimental-strip-types --disable-warning=ExperimentalWarning --env-file=./.env .",
+    "start:watch": "node --experimental-strip-types --disable-warning=ExperimentalWarning --env-file=./.env --watch .",
     "test": "node --experimental-strip-types --disable-warning=ExperimentalWarning --test ./tests/**/**.test.ts",
     "test:watch": "node --experimental-strip-types --disable-warnings=ExperimentalWarning --watch --test ./tests/**/**.test.ts"
   },
   "imports": {
     "#domain/*": "./src/domain/*",
     "#application/*": "./src/application/*",
+    "#infrastructure/*": "./src/infrastructure/*",
     "#types/*": "./types/*"
   },
   "keywords": [],
@@ -20,10 +21,19 @@
   "license": "ISC",
   "dependencies": {
     "@types/node": "24.0.3",
+    "argon2": "0.43.0",
+    "drizzle-orm": "0.44.2",
+    "fastify": "5.4.0",
+    "fluent-json-schema": "6.0.0",
+    "pg": "8.16.0",
     "typescript": "5.8.3",
+    "uuid": "11.1.0",
     "zod": "3.25.67"
   },
   "devDependencies": {
-    "@faker-js/faker": "9.8.0"
+    "@faker-js/faker": "9.8.0",
+    "@types/pg": "8.15.4",
+    "@types/uuid": "10.0.0",
+    "drizzle-kit": "0.31.1"
   }
 }

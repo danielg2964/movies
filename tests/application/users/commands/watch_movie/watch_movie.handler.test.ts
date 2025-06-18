@@ -15,7 +15,7 @@ import { MovieFailures } from "#application/movies/failures/movie.failures.ts";
 import { MovieEntity } from "#domain/movies/entities/movie.entity.ts";
 import { CategoryEntity } from "#domain/movies/entities/category.entity.ts";
 import type { UuidGenerator } from "#application/shared/uuid.generator.ts";
-import type { WatchedEntity } from "#domain/users/entities/watched.entity.ts";
+import { WatchedEntity } from "#domain/users/entities/watched.entity.ts";
 import { UserSuccesses } from "#application/users/successes/user.successes.ts";
 
 describe("WatchMovieHandler Test", () => {
@@ -109,7 +109,7 @@ describe("WatchMovieHandler Test", () => {
       user.uuid,
       user.name,
       user.password,
-      [movie]
+      [new WatchedEntity(faker.string.uuid(), user.uuid, movie.uuid, movie)]
     );
 
     const findByUuidMock = mock.method(user_repository_mock, "findByUuid");

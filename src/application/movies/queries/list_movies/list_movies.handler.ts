@@ -11,7 +11,7 @@ export class ListMoviesHandler {
 
   readonly #movie_repository: MovieRepository;
 
-  public handle(filter: MovieFilter, options: PaginationOptions): Promise<Pagination<MovieEntity>> {
-    return this.#movie_repository.findManyByFilterPaginated(filter, options);
+  async handle(filter: MovieFilter, options: PaginationOptions): Promise<Pagination<MovieEntity>> {
+    return await this.#movie_repository.findManyByFilterPaginated(filter, options);
   }
 }

@@ -6,13 +6,13 @@ export class MovieFilter {
     category_uuid: Maybe<string>,
     category_name: Maybe<string>,
     release: Maybe<Date>,
-    order_by: Maybe<string>
+    order: Maybe<string>
   ) {
     this.#name = name;
     this.#category_uuid = category_uuid;
     this.#category_name = category_name;
     this.#release = release;
-    this.#order_by = order_by;
+    this.#order_by = order;
   }
   
   readonly #name: Maybe<string>;

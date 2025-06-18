@@ -86,7 +86,7 @@ describe ("CreateUserHandler Test", () => {
       assert.equal(user.uuid, uuid_faked);
       assert.equal(user.name, command.name);
       assert.equal(user.password, hash_faked);
-      assert.equal(user.movies_watched.length, 0);
+      assert.equal(user.watched.length, 0);
 
       user_saved = user;
 

@@ -1,9 +1,12 @@
-import { Entity } from "#domain/shared/entity.ts"
+import { createApp } from "#infrastructure/app.ts";
 
 async function main(): Promise<void> {
-  const entity = new Entity('holaaa!');
+  const app = await createApp();
 
-  console.log(entity);
+  const listening = await app.listen({ port: 3000 });
+
+  console.log(app.printRoutes())
+  console.log(listening)
 }
 
 main();
