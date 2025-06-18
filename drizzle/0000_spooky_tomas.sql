@@ -6,20 +6,20 @@ CREATE TABLE "users" (
 --> statement-breakpoint
 CREATE TABLE "watched" (
 	"uuid" varchar(255) PRIMARY KEY NOT NULL,
-	"user_uuid" varchar(255),
-	"movie_uuid" varchar(255)
+	"user_uuid" varchar(255) NOT NULL,
+	"movie_uuid" varchar(255) NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE "categories" (
 	"uuid" varchar(255) PRIMARY KEY NOT NULL,
-	"name" varchar
+	"name" varchar(255) NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE "movies" (
 	"uuid" varchar(255) PRIMARY KEY NOT NULL,
-	"name" varchar,
-	"category_uuid" varchar(255),
-	"release" date
+	"name" varchar NOT NULL,
+	"category_uuid" varchar(255) NOT NULL,
+	"release" timestamp with time zone NOT NULL
 );
 --> statement-breakpoint
 ALTER TABLE "watched" ADD CONSTRAINT "watched_user_uuid_users_uuid_fk" FOREIGN KEY ("user_uuid") REFERENCES "public"."users"("uuid") ON DELETE no action ON UPDATE no action;--> statement-breakpoint
