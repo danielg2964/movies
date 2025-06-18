@@ -20,7 +20,7 @@ Proyecto en NodeJs haciendo uso una arquitectura limpia y clara para su correcta
 ## Instalación
 
 ```bash
-git clone [https://github.com/usuario/proyecto-nodejs.git](https://github.com/danielg2964/movies)
+git clone https://github.com/danielg2964/movies
 cd movies
 npm install
 ```
