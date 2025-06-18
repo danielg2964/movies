@@ -29,8 +29,7 @@
     "fluent-json-schema": "6.0.0",
     "pg": "8.16.0",
     "typescript": "5.8.3",
-    "uuid": "11.1.0",
-    "zod": "3.25.67"
+    "uuid": "11.1.0"
   },
   "devDependencies": {
     "@faker-js/faker": "9.8.0",
