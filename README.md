@@ -7,9 +7,9 @@ Proyecto en NodeJs haciendo uso una arquitectura limpia y clara para su correcta
 - Estructura modular y clara
 - Uso de `node --env-file` para configuración
 - Uso del framework de `Fastify` para mayor velocidad
-- Uso de las últimas caracterisitcas de `NodeJs LTS`
+- Uso de las últimas caracterisitcas de `Node.js LTS`
 - Uso nativo de `Typescript` gracias a `node --experimental-strip-types`
-- Uso de la suite de testing nativa de `Node` `node:test` y `node:assert/strict`
+- Uso de la suite de testing nativa de `Node.js` `node:test` y `node:assert/strict`
 
 ## Requisitos
 
