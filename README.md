@@ -1,4 +1,4 @@
-# Proyecto Node.js
+# Proyecto Node.js para Kubo
 
 Proyecto en Node.Js haciendo uso de una arquitectura limpia y clara para su correcta lectura y entendimiento.
 
