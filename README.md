@@ -31,12 +31,14 @@ node --run test
 ```
 
 ## Preparación
+
 ¡Recuerda tener tu archivo `.env` listo!
 ```bash
 npx drizzle-kit push
 ```
 
 ## Ejecución
+
 ```bash
 node --run start
 ```
