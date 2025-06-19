@@ -1,3 +1,9 @@
 import { drizzle } from "drizzle-orm/node-postgres";
 
-export const db = drizzle(process.env["POSTGRES_URI"]!);
+const uri = process.env["POSTGRES_URI"] ?? null;
+
+if (uri === null) {
+  throw new Error("POSTGRES_URI is needed");
+}
+
+export const db = drizzle(uri);

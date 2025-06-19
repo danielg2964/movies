@@ -5,8 +5,8 @@
   "main": "./src/main.ts",
   "type": "module",
   "scripts": {
-    "start": "node --experimental-strip-types --disable-warning=ExperimentalWarning --env-file=./.env .",
-    "start:watch": "node --experimental-strip-types --disable-warning=ExperimentalWarning --env-file=./.env --watch .",
+    "start": "node --experimental-strip-types --disable-warning=ExperimentalWarning --env-file-if-exists=./.env .",
+    "start:watch": "node --experimental-strip-types --disable-warning=ExperimentalWarning --env-file-if-exist=./.env --watch .",
     "test": "node --experimental-strip-types --disable-warning=ExperimentalWarning --test ./tests/**/**.test.ts",
     "test:watch": "node --experimental-strip-types --disable-warnings=ExperimentalWarning --watch --test ./tests/**/**.test.ts"
   },
