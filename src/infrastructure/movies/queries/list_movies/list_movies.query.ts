@@ -6,23 +6,26 @@ export const ListMoviesQuery = Type.Intersect([
   PaginationQuery,
   Type.Object({
     name: Type.Union(
-      [ Type.String(), Type.Null()],
-      { default: null }
+       [Type.String({ minLength: 1 }), Type.Null()],
+       { default: null }
     ),
     category_uuid: Type.Union(
       [Type.String({ format: "uuid" }), Type.Null()],
       { default: null }
     ),
     category_name: Type.Union(
-      [Type.String(), Type.Null()],
-      { default:null }
+      [Type.String({ minLength: 1 }), Type.Null()],
+      { default: null }
     ),
     release: Type.Union(
-      [Type.String({ format: "date" }), Type.Null()]
+      [Type.String({ format: "date" }), Type.Null()],
+      { default: null }
     ),
     order: Type.Union(
       [Type.Literal(MoviesConstants.ORDER_ASC),
-       Type.Literal(MoviesConstants.ORDER_DEC)]
+       Type.Literal(MoviesConstants.ORDER_DEC),
+       Type.Null()],
+      { default: MoviesConstants.ORDER_DEC }
     )
   })
 ]);

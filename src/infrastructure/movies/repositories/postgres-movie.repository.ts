@@ -115,12 +115,23 @@ export class PostgresMovieRepository implements MovieRepository {
   }
 
   async findManyByFilterPaginated(movie_filter: MovieFilter, pagination_options: PaginationOptions): Promise<Pagination<MovieEntity>> {
+    const query = and(
+      movie_filter.name.has_value
+      ? ilike(movies.name, movie_filter.name.value)
+      : undefined,
+      movie_filter.release.has_value
+      ? eq(movies.release, movie_filter.release.value)
+      : undefined
+    );
+
     const total_count_result = await db
       .select({ count: count() })
-      .from(movies);
+      .from(movies)
+      .where(query);
 
     const total_count_first = total_count_result[0] ?? null;
 
+    
     const result = await db
       .select({
         uuid: movies.uuid,
@@ -129,14 +140,7 @@ export class PostgresMovieRepository implements MovieRepository {
         release: movies.release
       })
       .from(movies)
-      .where(and(
-        movie_filter.name.has_value
-        ? ilike(movies.name, movie_filter.name.value)
-        : undefined,
-        movie_filter.release.has_value
-        ? eq(movies.release, movie_filter.release.value)
-        : undefined
-      ))
+      .where(query)
       .orderBy(
         movie_filter.order_by.has_value
         && movie_filter.order_by.value === MoviesConstants.ORDER_ASC

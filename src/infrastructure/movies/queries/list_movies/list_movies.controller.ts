@@ -14,29 +14,32 @@ export class ListMoviesController {
   readonly #handler: ListMoviesHandler;
 
   readonly handle = async (req: FastifyRequest<{Querystring:ListMoviesQuery}>, rep: FastifyReply) => {
+
     const query = req.query;
 
+    console.log(query);
+
     const filter = new MovieFilter(
-      query.name === null || query.name === undefined
+      query.name === null
       ? Maybe.nothing()
       : Maybe.some(query.name),
-      query.category_uuid === null || query.category_uuid === undefined 
+      query.category_uuid === null
       ? Maybe.nothing()
       : Maybe.some(query.category_uuid),
-      query.category_name === null || query.category_name === undefined 
+      query.category_name === null
       ? Maybe.nothing()
       : Maybe.some(query.category_name),
-      query.release === null || query.release === undefined 
+      query.release === null
       ? Maybe.nothing()
       : Maybe.some(new Date(query.release)),
-      query.order === null || query.order === undefined 
+      query.order === null
       ? Maybe.nothing()
       : Maybe.some(query.order)
     );
 
     const pagination_options = new PaginationOptions(
-      query.page,
-      query.limit
+      query.page!,
+      query.limit!
     );
 
     const result = await this.#handler.handle(filter, pagination_options);

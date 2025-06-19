@@ -12,7 +12,7 @@ export class ListUsersController {
   readonly #list_users_handler: ListUsersHandler;
 
   readonly handle = async (req: FastifyRequest<{Querystring: PaginationQuery}>, rep: FastifyReply) => {
-    const pagination_options = new PaginationOptions(req.query.page, req.query.limit);
+    const pagination_options = new PaginationOptions(req.query.page!, req.query.limit!);
 
     const result = await this.#list_users_handler.handle(pagination_options);
 

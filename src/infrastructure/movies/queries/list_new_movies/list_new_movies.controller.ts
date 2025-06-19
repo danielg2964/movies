@@ -13,8 +13,8 @@ export class ListNewMoviesController {
 
   readonly handle = async (req: FastifyRequest<{Querystring:PaginationQuery}>, rep: FastifyReply) => {
     const pagination_options = new PaginationOptions(
-      req.query.page,
-      req.query.limit
+      req.query.page!,
+      req.query.limit!
     ); 
 
     const result = await this.#handler.handle(pagination_options);
