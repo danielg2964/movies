@@ -18,7 +18,7 @@ export const ListMoviesQuery = Type.Intersect([
       { default:null }
     ),
     release: Type.Union(
-      [Type.String({ fromat: "date" }), Type.Null()]
+      [Type.String({ format: "date" }), Type.Null()]
     ),
     order: Type.Union(
       [Type.Literal(MoviesConstants.ORDER_ASC),
