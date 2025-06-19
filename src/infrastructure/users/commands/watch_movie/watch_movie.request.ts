@@ -1,10 +1,9 @@
-import { S } from "fluent-json-schema";
+import { Type, type Static } from "@sinclair/typebox";
 
-export const WatchMovieRequest = S.object()
-  .prop("user_uuid", S.string()).required()
-  .prop("movie_uuid", S.string()).required();
+export const WatchMovieRequest = Type.Object({
+  user_uuid: Type.String(),
+  movie_uuid: Type.String()
+});
 
-export type WatchMovieRequest = {
-  user_uuid: string;
-  movie_uuid: string;
-}
+export type WatchMovieRequest = Static<typeof WatchMovieRequest>
+

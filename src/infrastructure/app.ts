@@ -1,3 +1,4 @@
+import type { TypeBoxTypeProvider } from "@fastify/type-provider-typebox";
 import { fastify } from "fastify";
 import { UsersRoutes } from "./users/users.routes.ts";
 import { PostgresUserRepository } from "./users/repositories/postgres-user.repository.ts";
@@ -7,6 +8,8 @@ import { PostgresWatchedRepository } from "./users/repositories/postgres-watched
 import { PostgresMovieRepository } from "./movies/repositories/postgres-movie.repository.ts";
 import { MoviesRoutes } from "./movies/movies.routes.ts";
 import { PostgresCategoryRepository } from "./movies/repositories/postgres-category.repository.ts";
+
+export type AppInstance = Awaited<ReturnType<typeof createApp>>
 
 export async function createApp() {
   const app = fastify();
@@ -41,5 +44,5 @@ export async function createApp() {
 
   await app.register(movies_routes.registerRoutes, { prefix: "movies" });
 
-  return app;
+  return app.withTypeProvider<TypeBoxTypeProvider>();
 }

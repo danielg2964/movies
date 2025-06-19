@@ -1,10 +1,9 @@
-import { S } from "fluent-json-schema";
+import { Type, type Static } from "@sinclair/typebox";
 
-export type PaginationQuery = {
-  page: number,
-  limit: number
-}
+export const PaginationQuery = Type.Object({
+  page: Type.Number(),
+  limit: Type.Number()
+});
 
-export const PaginationQuery = S.object()
-  .prop("page", S.number())
-  .prop("limit", S.number());
+export type PaginationQuery = Static<typeof PaginationQuery>
+

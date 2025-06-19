@@ -1,19 +1,30 @@
 import { MoviesConstants } from "#domain/movies/constants/movies.constants.ts"
 import { PaginationQuery } from "#infrastructure/shared/queries/pagination.query.ts"
-import { S } from "fluent-json-schema"
+import { Type, type Static } from "@sinclair/typebox";
 
-export type ListMoviesQuery = PaginationQuery & {
-  name: string | null,
-  category_uuid: string | null,
-  category_name: string | null,
-  release: string | null,
-  order: string | null
-}
+export const ListMoviesQuery = Type.Intersect([
+  PaginationQuery,
+  Type.Object({
+    name: Type.Union(
+      [ Type.String(), Type.Null()],
+      { default: null }
+    ),
+    category_uuid: Type.Union(
+      [Type.String({ format: "uuid" }), Type.Null()],
+      { default: null }
+    ),
+    category_name: Type.Union(
+      [Type.String(), Type.Null()],
+      { default:null }
+    ),
+    release: Type.Union(
+      [Type.String({ fromat: "date" }), Type.Null()]
+    ),
+    order: Type.Union(
+      [Type.Literal(MoviesConstants.ORDER_ASC),
+       Type.Literal(MoviesConstants.ORDER_DEC)]
+    )
+  })
+]);
 
-export const ListMoviesQuery = S.object()
-  .prop("name", S.oneOf([S.string(), S.null()]))
-  .prop("category_uuid", S.oneOf([S.string(), S.null()]))
-  .prop("category_name", S.oneOf([S.string(), S.null()]))
-  .prop("release", S.oneOf([S.string().format("date"), S.null()]))
-  .prop("order", S.oneOf([S.enum([MoviesConstants.ORDER_ASC, MoviesConstants.ORDER_DEC]), S.null()]))
-  .extend(PaginationQuery)
+export type ListMoviesQuery = Static<typeof ListMoviesQuery>

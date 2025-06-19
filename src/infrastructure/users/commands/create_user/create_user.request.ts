@@ -1,10 +1,9 @@
-import { S } from "fluent-json-schema";
+import { Type, type Static } from "@sinclair/typebox";
 
-export const CreateUserRequest = S.object()
-  .prop('name', S.string()).required()
-  .prop('password', S.string()).required();
+export const CreateUserRequest = Type.Object({
+  name: Type.String(),
+  password: Type.String()
+});
 
-export type CreateUserRequest = {
-  name: string,
-  password: string
-}
+export type CreateUserRequest = Static<typeof CreateUserRequest>
+

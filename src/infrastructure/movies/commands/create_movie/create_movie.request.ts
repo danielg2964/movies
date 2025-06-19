@@ -1,12 +1,9 @@
-import { S } from "fluent-json-schema"
+import { Type, type Static } from "@sinclair/typebox";
 
-export type CreateMovieRequest = {
-  name: string,
-  category_uuid: string,
-  release: string 
-}
+export const CreateMovieRequest = Type.Object({
+  name: Type.String(),
+  category_uuid: Type.String({ format: "uuid" }),
+  release: Type.String({ format: "date" })
+});
 
-export const CreateMovieRequest = S.object()
-  .prop("name", S.string())
-  .prop("category_uuid", S.string())
-  .prop("release", S.string().format("date"))
+export type CreateMovieRequest = Static<typeof CreateMovieRequest>
