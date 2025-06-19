@@ -42,3 +42,7 @@ npx drizzle-kit push
 ```bash
 node --run start
 ```
+
+## Datos precargados
+
+Si vas a usar la API en `Render.com`, los datos que estan en la carpeta `db` están precargados y listos en la base de datos. Con ellos, puedes comenzar a crear películas.
